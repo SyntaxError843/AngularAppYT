@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'AngularAppYT';
+  // declare name as string in TypeScript
+  name:string = '';
+
+  // constructor for the class
+  constructor() {
+    this.changeName('there!');
+  }
+
+  // method to change this.name in TypeScript
+  changeName(name:string):void {
+    this.name = name;
+  }
 }

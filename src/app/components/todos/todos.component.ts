@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '../../models/Todo';
 import { TodoService } from '../../services/todo.service';
+import { AddTodoComponent } from '../forms/add-todo/add-todo.component';
 
 @Component({
   selector: 'app-todos',
@@ -9,6 +10,8 @@ import { TodoService } from '../../services/todo.service';
 })
 export class TodosComponent implements OnInit {
   todos:Todo[];
+
+  public getTodosLen():number {return this.todos.length}
 
   constructor(private todoService:TodoService) { }
 
@@ -28,6 +31,13 @@ export class TodosComponent implements OnInit {
     this.todoService.deleteTodo(todo).subscribe(() => {
       console.log('todo no. ' + todo.id  + ' deleted from server')
     });
+  }
+
+  addTodo(todo:Todo) {
+    this.todoService.addTodo(todo).subscribe(todo => {
+      this.todos.push(todo);
+      console.log(todo);
+    })
   }
 
 }

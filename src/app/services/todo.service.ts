@@ -37,4 +37,9 @@ export class TodoService {
 
     return this.http.delete<Todo>(url,httpOptions);
   }
+
+  addTodo(todo:Todo):Observable<Todo> {
+    // all added todos have the same id of 201
+    return this.http.post<Todo>(this.todosURL, todo, httpOptions)
+  }
 }
